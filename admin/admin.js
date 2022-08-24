@@ -19,6 +19,7 @@ import { getFirestore, onSnapshot,
 import {getStorage, ref, uploadBytes, getDownloadURL, listAll, list} from 'https://www.gstatic.com/firebasejs/9.9.2/firebase-storage.js'
 
 
+
 const makeitgreenConfig = {
     apiKey: "AIzaSyDRHNu_OxJWPAT1yRlH7cFPue04dvsG3x8",
     authDomain: "make-it-green-d951a.firebaseapp.com",
@@ -37,6 +38,8 @@ const makeitgreenAuth = getAuth(makeitgreen)
 
 const makeitgreendb = getFirestore(makeitgreen)
 
+const storage = getStorage(makeitgreen)
+// const storageRef = ref(storage)
 
 
 
@@ -93,6 +96,33 @@ document.querySelector("#sendArticle").addEventListener("click", async (e)=>{
         // })
         ////emtpy 
 
+        ////make image; 
+////make ref
+let fileRef = ref(storage, '/articles' + new Date().toISOString().replace(/:/g, '-') +document.querySelector("#articleImg").files[0].name.replaceAll(" ","") )
+    ///uplaod 
+
+    let articleImg 
+    uploadBytes(fileRef, document.querySelector("#articleImg").files[0]).then(res=>{
+        getDownloadURL(res.ref).then(url=>{
+            console.log(url)
+            articleImg = url
+
+    let articletosend = {
+        title: document.querySelector("#articleTitle").value,
+        img: articleImg,
+        content: document.querySelector("#articleContent").value
+    }
+
+        
+///addDoc; add document to a collection; 
+let articlesColl = collection(makeitgreendb, 'articles')
+addDoc(articlesColl, {articletosend}).then(()=>{}) 
+
+
+
+        })
+    })
+
 
         document.querySelector("#articleTitle").value = ''
         document.querySelector("#articleContent").value = ''
@@ -119,23 +149,31 @@ document.querySelector("#sendDonor").addEventListener("click", async (e)=>{
         console.log("all good")
 
         ////make 
-        // let fd = new FormData()
-        // fd.append("donorName", document.querySelector("#donorName").value)
-        // fd.append("donorLogo", document.querySelector("#donorLogo").files[0])
-        // document.querySelector("#donorWebsite").value?fd.append("donorWebsite", document.querySelector("#donorWebsite").value):null
+////make ref
+let fileRef = ref(storage, '/donors' + new Date().toISOString().replace(/:/g, '-') +document.querySelector("#donorLog").files[0].name.replaceAll(" ","") )
+    ///uplaod 
+
+    let donorLogo 
+    uploadBytes(fileRef, document.querySelector("#donorLogo").files[0]).then(res=>{
+        getDownloadURL(res.ref).then(url=>{
+            console.log(url)
+            donorLogo = url
+
+    let donortosend = {
+        name: document.querySelector("#donorName").value,
+        logo: donorLogo,
+        website: document.querySelector("#donorWebsite").value
+    }
+
         
-        // console.log(fd)
-
-
-        // ////send 
-        // await fetch("/makeDonor", {
-        //     method: "POST", 
-        //     body: fd
-        // })
+///addDoc; add document to a collection; 
+let donorColl = collection(makeitgreendb, 'donors')
+addDoc(donorColl, {donortosend}).then(()=>{}) 
 
 
 
-        ////empty 
+        })
+    })
 
 
         document.querySelector("#donorName").value = ''
