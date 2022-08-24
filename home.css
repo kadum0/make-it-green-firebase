@@ -45,6 +45,10 @@ footer {
 
 /* main */
 
+.logged,.notlogged {
+    display: none;
+}
+
 main{
     display: flex;
     flex-direction: column;

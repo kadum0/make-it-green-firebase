@@ -16,7 +16,7 @@ footer {
     width: 15vh;
     border-radius: 50%;
     /* background: green; */
-    background: url('./public-imgs/makeitgreen-logo.jpg');
+    background: url('../imgs/makeitgreen-logo.jpg');
     background-size: contain;
 }
 
@@ -140,7 +140,7 @@ h2{
 @font-face {
     /* font-family: "enfont"; */
     font-family: enfont;
-    src: url('./fonts/en/TradeGothicLTStd-BdCn20.woff');
+    src: url('../fonts/en/TradeGothicLTStd-BdCn20.woff');
     /* src: url('../public/fonts/en/TradeGothicLTStd-BdCn20.woff'); */
 }
 
@@ -148,7 +148,7 @@ h2{
 @font-face {
     /* font-family: "enfont"; */
     font-family: senfont;
-    src: url('./fonts/en/TradeGothicLTStd-Cn18.woff');
+    src: url('../fonts/en/TradeGothicLTStd-Cn18.woff');
 }
 
 

@@ -82,23 +82,9 @@ document.querySelector("#sendArticle").addEventListener("click", async (e)=>{
         console.log("all good")
 
         ////make
-
-
-
-        // let fd = new FormData()
-        // fd.append("articleTitle", document.querySelector("#articleTitle").value)
-        // fd.append('articleContent', document.querySelector("#articleContent").value)
-        // fd.append("articleImg", document.querySelector("#articleImg").files[0])
-        // ////send 
-        // await fetch("/makeArticle", {
-        //     method: "POST", 
-        //     body: fd
-        // })
-        ////emtpy 
-
-        ////make image; 
-////make ref
-let fileRef = ref(storage, '/articles' + new Date().toISOString().replace(/:/g, '-') +document.querySelector("#articleImg").files[0].name.replaceAll(" ","") )
+            ////make image; 
+            ////make ref
+let fileRef = ref(storage, '/articles/' + new Date().toISOString().replace(/:/g, '-') +document.querySelector("#articleImg").files[0].name.replaceAll(" ","") )
     ///uplaod 
 
     let articleImg 
@@ -116,17 +102,21 @@ let fileRef = ref(storage, '/articles' + new Date().toISOString().replace(/:/g, 
         
 ///addDoc; add document to a collection; 
 let articlesColl = collection(makeitgreendb, 'articles')
-addDoc(articlesColl, {articletosend}).then(()=>{}) 
+addDoc(articlesColl, {
+    title: document.querySelector("#articleTitle").value,
+    img: articleImg,
+    content: document.querySelector("#articleContent").value
+}).then(()=>{}) 
 
 
+        document.querySelector("#articleTitle").value = ''
+        document.querySelector("#articleContent").value = ''
+        document.querySelector("#articleImg").value= null
 
         })
     })
 
 
-        document.querySelector("#articleTitle").value = ''
-        document.querySelector("#articleContent").value = ''
-        document.querySelector("#articleImg").files[0] = null
 
     }else{
         console.log(typeof document.querySelector("#articleTitle").value)
@@ -150,7 +140,7 @@ document.querySelector("#sendDonor").addEventListener("click", async (e)=>{
 
         ////make 
 ////make ref
-let fileRef = ref(storage, '/donors' + new Date().toISOString().replace(/:/g, '-') +document.querySelector("#donorLog").files[0].name.replaceAll(" ","") )
+let fileRef = ref(storage, '/donors/' + new Date().toISOString().replace(/:/g, '-') +document.querySelector("#donorLogo").files[0].name.replaceAll(" ","") )
     ///uplaod 
 
     let donorLogo 
@@ -168,17 +158,13 @@ let fileRef = ref(storage, '/donors' + new Date().toISOString().replace(/:/g, '-
         
 ///addDoc; add document to a collection; 
 let donorColl = collection(makeitgreendb, 'donors')
-addDoc(donorColl, {donortosend}).then(()=>{}) 
-
-
-
+addDoc(donorColl, donortosend).then(()=>{}) 
+        document.querySelector("#donorName").value = ''
+        document.querySelector("#donorWebsite").value = ''
+        document.querySelector("#donorLogo").value = null
         })
     })
 
-
-        document.querySelector("#donorName").value = ''
-        document.querySelector("#donorWebsite").value = ''
-        document.querySelector("#donorLogo").files[0] = null
 
     }else{
         console.log(typeof document.querySelector("#donorName").value)

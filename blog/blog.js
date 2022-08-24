@@ -46,27 +46,28 @@ window.onload = async()=>{
             })
             articles = docs
             console.log(docs)
+
+            console.log(articles)
+            document.querySelector("#articles").innerHTML = "" 
+
+            Object.values(articles).forEach(e=>{
+                console.log(e)
+
+            let article = `
+            <a href='/blog/${e.title}' class='article'>
+                <img style='background-image:url("${e.img}")' class='article-img'> 
+            <div>
+                    <div class="content">
+                        <h2>${e.title}</h2>
+                        <p>${e.content}</p>
+                    </div>
+            </div>
+        </a>
+        `
+            document.querySelector("#articles").innerHTML += article
+        })
         }).catch(err=>console.log(err.message))
 
 
-    console.log(artilces)
-    document.querySelector("#articles").innerHTML = "" 
-
-    Object.values(artilces).forEach(e=>{
-        console.log(e)
-
-    let article = `
-    <a href='/blog/${e.title}' class='article'>
-        <img style='background-image:url("${e.img}")' class='article-img'> 
-    <div>
-            <div class="content">
-                <h2>${e.title}</h2>
-                <p>${e.content}</p>
-            </div>
-    </div>
-</a>
-`
-    document.querySelector("#articles").innerHTML += article
-})
 }
 
