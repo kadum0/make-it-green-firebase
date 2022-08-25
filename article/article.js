@@ -41,6 +41,9 @@ window.onload= ()=>{
 }
 
 setTimeout(()=>{
+
+    console.log(articleContenttoex)
+
     document.querySelector('#title').textContent = articleContenttoex.title
     document.querySelector("#articleImg").setAttribute('src', articleContenttoex.img)
     document.querySelector('#content').textContent = articleContenttoex.content

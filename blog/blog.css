@@ -155,6 +155,7 @@ a{
 
     #articlePage{
         display: none;
+        color: white;
     }
     #articlePage main {
         display: flex;
