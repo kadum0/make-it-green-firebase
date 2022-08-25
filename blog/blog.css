@@ -17,7 +17,7 @@ footer {
     width: 15vh;
     border-radius: 50%;
     /* background: green; */
-    background: url('./public-imgs/makeitgreen-logo.jpg');
+    background: url('../imgs/makeitgreen-logo.jpg');
     background-size: contain;
 }
 
@@ -36,7 +36,7 @@ footer {
     color: white;
 }
 .article{
-    height: 45vh;
+    height: 50vh;
     width: 45vh;
     background: white;
     border-radius: 1rem;
@@ -77,6 +77,12 @@ footer {
 .article .content{
 
 }
+
+.link{
+    height: 100%;
+    width: 100%;
+}
+
 
 /* footer */
 
@@ -143,6 +149,33 @@ a{
     color: black;
     /* overflow: hidden; */
 }
+
+/* article */
+    /* main */
+
+    #articlePage{
+        display: none;
+    }
+    #articlePage main {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding: 1rem 4rem;
+    }
+
+    #articlePage img {
+        height: 40vh;
+        width: 100%;
+        background: url('<%= articleData.img %>');
+        background-position: center;
+        background-size: cover;
+    }
+
+
+
+
+
 
 @font-face {
     /* font-family: "enfont"; */
