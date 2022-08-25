@@ -47,6 +47,21 @@ footer {
     flex-direction: column;
     align-items: center; */
     /* padding: 1rem; */
+    position: relative;
+}
+.article button{
+    font-family: enfont;
+    font-size: 1.4rem;
+    background: #68C451;
+    background: #49a034;
+    border-radius: .3rem;
+    cursor: pointer;
+    transition: .1s linear;
+    position: absolute;
+    right: 1rem;
+}
+.article button:hover{
+    background: #68C451;
 }
 .article>div{
     /* display: flex;
@@ -77,12 +92,6 @@ footer {
 .article .content{
 
 }
-
-.link{
-    height: 100%;
-    width: 100%;
-}
-
 
 /* footer */
 
