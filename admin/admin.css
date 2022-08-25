@@ -3,8 +3,44 @@
 
 /* basic */
 /* header */
-header{
 
+header,
+footer {
+    height: 15vh;
+    background: #68C451;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 2rem;
+}
+
+.logo {
+    height: 15vh;
+    width: 15vh;
+    border-radius: 50%;
+    /* background: green; */
+    background: url('../imgs/makeitgreen-logo.jpg');
+    background-size: contain;
+}
+
+.contentLinks {
+    /* background: red; */
+}
+
+.contentLinks a {
+    text-decoration: none;
+    background: #4d883e;
+    color: white;
+    font-size: 2rem;
+    margin: 1rem;
+    padding: .5rem;
+    border-radius: .4rem;
+    /* box-sizing: 1rem; */
+    transition: .2s linear;
+}
+
+.contentLinks a:hover {
+    background: #292e27;
 }
 
 /* main */
@@ -47,7 +83,36 @@ main div input{
     background: #87f06d;
 }
 
+.logged, .notlogged{
+    display: none;
+}
+
 /* footer */
+
+
+footer {
+    height: 20vh;
+    background: #68C451;
+}
+
+.contact {
+    height: 90%;
+    width: 40%;
+    /* background: white; */
+    background: #141414;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    color: white;
+}
+
+.contact img {
+    height: 2rem;
+    width: 2rem;
+}
+
+
 
 /* shared */
 
@@ -59,6 +124,7 @@ body{
 body *{
     font-family: enfont;
 }
+
 
 
 
