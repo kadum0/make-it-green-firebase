@@ -277,74 +277,77 @@ window.onload= async ()=>{
         })
         articles = docs
         console.log(docs)
+
+            // deploy artciles; 
+        // make objects; imgs 
+
+            document.querySelector('.article-samples').innerHTML = ''
+        for (let i = 0; i < 3; i++) {
+            let articleTemp =  `
+            <a href='/blog/${articles[i].title}' class='article'
+                <div>
+                        <img style='background-image:url("${articles[i].img}")'> 
+                        <div class="content">
+                            <h2>${articles[i].title}</h2>
+                            <p>${articles[i].content}</p>
+                        </div>
+                </div>
+            </a>
+            `
+            document.querySelector('.article-samples').innerHTML += articleTemp
+                }
+
+
     }).catch(err=>console.log(err.message))
 
     console.log(articles)
 
-    // deploy artciles; 
-        // make objects; imgs 
 
-        let articleTemp =  `
+    // get donors
+    let donors = []
+    await getDocs(collection(makeitgreendb, 'donors')).then((data)=>{
+    let docs = []
+        data.docs.forEach(doc=>{
+            docs.push({...doc.data(), id: doc.id})
+        })
+        donors = docs
+        console.log(docs)
+    ///deploy donors 
+        ///make elements
+            document.querySelector('.donor-samples').innerHTML = ''
 
-    <a href='/blog/${articles[0].title}' class='article'
-        <div>
-                <img style='background:url("${articles[0].img}")'> 
-                <div class="content">
-                    <h2>${articles[0].title}</h2>
-                    <p>${articles[0].content}</p>
-                </div>
-        </div>
-    </a>
-
-    <a href='/blog/${articles[1].title}' class='article'
-        <div>
-                <img style='background:url("${articles[1].img}")'> 
-                <div class="content">
-                    <h2>${articles[1].title}</h2>
-                    <p>${articles[1].content}</p>
-                </div>
-        </div>
-    </a>
-
-    <a href='/blog/${articles[2].title}' class='article'
-        <div>
-                <img style='background:url("${articles[2].img}")'> 
-                <div class="content">
-                    <h2>${articles[2].title}</h2>
-                    <p>${articles[2].content}</p>
-                </div>
-        </div>
-    </a>
-    `
-    document.querySelector('.article-samples').innerHTML = articleTemp
-
-
-    // // get donors
-    // let getDonors = await fetch('/donors')
-    // let donors = await getDonors.json()
-    // console.log(donors)
-    // console.log(donors[0].logo)
-
-    // ///deploy donors 
-    //     ///make elements
-
+        for (let i = 0; i < 3; i++) {
+            let donorsTemp = `
+            <div class="donor">
+                <img style='background-image:url("${donors[i].logo}")'> 
+                <h2 class="donor-name">${donors[i].name}</h2>
+            </div>
+        `
+        
+    document.querySelector('.donor-samples').innerHTML += donorsTemp
+            }
+        
     // let donorsTemp = `
     //     <div class="donor">
-    //         <img style='background:url("${donors[0].logo}")'> 
-    //         <h2 class="donor-name">${donors[0].donorName}</h2>
+    //     <img style='background-image:url("${donors[0].logo}")'> 
+    //     <h2 class="donor-name">${donors[0].name}</h2>
     //     </div>
 
     //     <div class="donor">
-    //         <img style='background:url("${donors[1].logo}")'> 
-    //         <h2 class="donor-name">${donors[1].donorName}</h2>
+    //     <img style='background-image:url("${donors[1].logo}")'> 
+    //         <h2 class="donor-name">${donors[1].name}</h2>
     //     </div>
     //     <div class="donor">
-    //         <img style='background:url("${donors[2].logo}")'> 
-    //         <h2 class="donor-name">${donors[2].donorName}</h2>
+    //     <img style='background-image:url("${donors[2].logo}")'> 
+    //         <h2 class="donor-name">${donors[2].name}</h2>
     //     </div>
     // `
     //     ////insert elements
     // document.querySelector('.donor-samples').innerHTML = donorsTemp
+    }).catch(err=>console.log(err.message))
+    console.log(donors)
+    console.log(donors[0].logo)
+
 
 
 }
